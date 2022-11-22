@@ -5,7 +5,7 @@ import Core from "@containers/base/Core";
 import React, { Suspense, lazy } from "react";
 import Fallback from "./components/base/Fallback";
 
-import ErrorBoundary from "./components/error/ErrorBoundary.jsx";
+// import ErrorBoundary from "./components/error/ErrorBoundary.jsx";
 
 const HomePage = React.lazy(() => import("./pages/home/HomePage.jsx"));
 const NotFound = React.lazy(() => import("./pages/NotFoundPage.jsx"));
