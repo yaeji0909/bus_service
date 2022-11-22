@@ -4,8 +4,11 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import { Link } from "react-router-dom";
 import zIndexes from "@lib/styles/zIndexes";
+import { useEffect } from "react";
 
 const BottomTab = () => {
+  useEffect(() => {}, []);
+
   return (
     <Block>
       <Link to='/search'>

@@ -1,16 +1,15 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
 // import { useRecoilState } from "recoil";
-// import { selectedCity } from "../../recoil/map";
+// import { selectedCity } from "@recoil/map";
 import useToggle from "@lib/hooks/useToggle";
 
 const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
   const [clickToggle, setClickToggle] = useToggle(false);
-  const [clickedBusStop, setClickedBusStop] = useState("");
   // const [city, setCity] = useRecoilState(selectedCity);
 
   useEffect(() => {
@@ -32,20 +31,18 @@ const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
       console.log(clickToggle);
       setTimeout(() => {
         putMutation.mutate(resultList.city, resultList.id);
-      }, 1000);
+      }, 3000);
     } else if (!clickToggle) {
       console.log(clickToggle);
       setTimeout(() => {
         deleteMutation.mutate(resultList.city, resultList.id);
-      }, 1000);
+      }, 3000);
     }
   };
 
   const clickHandler = () => {
     setClickToggle(!clickToggle);
-    setClickedBusStop(resultList);
     editFavList(!clickToggle);
-    console.log(resultList);
   };
 
   return resultList.name?.includes(query) || resultList.no?.includes(query) ? (

@@ -1,5 +1,5 @@
-import { useRef } from "react";
 import styled, { css } from "styled-components";
+import { useRef } from "react";
 import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
 import { useRecoilValue } from "recoil";
 import { favBusStopList } from "@recoil/favorites";

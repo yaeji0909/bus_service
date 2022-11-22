@@ -13,11 +13,11 @@ const Toast = () => {
           className: "",
           duration: 5000,
           style: {
-            borderRadius: "1rem",
-            background: "#363636",
+            borderRadius: "1.5rem",
+            background: "#3F4150",
             color: "#fff",
             fontSize: "1rem",
-            padding: "0.2rem",
+            padding: "0.5rem",
           },
           // Default options for specific types
           success: {

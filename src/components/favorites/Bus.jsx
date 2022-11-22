@@ -1,17 +1,13 @@
 import busIcon from "@static/svg/bus-icon.svg";
 import bgImg from "@static/images/background-img.png";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useQuery } from "react-query";
-import { getBusStopInfo, getClickedBusInfo } from "@api/mapApi";
+import { getClickedBusInfo } from "@api/mapApi";
 import Timer from "../home/utils/Timer";
 import media from "../../lib/styles/media";
 import { useCallback } from "react";
 
 const Bus = ({ list = [], bus = [] }) => {
-  const { data: busStopData = [] } = useQuery(["route", list.station], () =>
-    getBusStopInfo(list.station)
-  );
-
   // 즐겨찾기 추가되있는 버스 도착 정보 조회
   const { data: busArrivalInfo = [] } = useQuery(
     ["busArrivalInfo", bus.id],

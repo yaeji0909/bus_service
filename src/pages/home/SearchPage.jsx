@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useCallback, useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { searchBusStop } from "@api/BusServiceApi";
 import SearchInput from "@components/search/SearchInput";
 import SearchResult from "@components/search/SearchResult";
@@ -17,9 +17,8 @@ function SearchPage() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const navigate = useNavigate();
-  const [city, setCity] = useRecoilState(selectedCity);
-  const [favoriteBusStopList, setFavoriteBusStopList] =
-    useRecoilState(favBusStopList);
+  const city = useRecoilValue(selectedCity);
+  const favoriteBusStopList = useRecoilValue(favBusStopList);
 
   const { data: searchListData = [], isSuccess } = useQuery(
     ["searchBusStop", searchKeyword],

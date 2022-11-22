@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useLayoutEffect, useRef } from "react";
 import { useQuery } from "react-query";
 import { getFavoriteList } from "@api/favoriteApi";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { selectedCity } from "@recoil/map";
 import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
 import useStayScrolled from "react-stay-scrolled";
@@ -13,7 +13,7 @@ import exampleImg from "@static/images/favorites-example.png";
 // import NorthIcon from "@mui/icons-material/North";
 
 const BottomSheetBody = () => {
-  const [city, setCity] = useRecoilState(selectedCity);
+  const city = useRecoilValue(selectedCity);
   const bottomBody = useRef(null);
   const { scrollBottom } = useStayScrolled(bottomBody);
 
@@ -21,7 +21,7 @@ const BottomSheetBody = () => {
     scrollBottom();
   }, [scrollBottom]);
 
-  const { data: favoriteListData = "" } = useQuery(["favoriteList", 0], () =>
+  const { data: favoriteListData } = useQuery(["favoriteList"], () =>
     getFavoriteList(city)
   );
 
