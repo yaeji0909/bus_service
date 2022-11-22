@@ -1,27 +1,3 @@
-// import distanceInWordsToNow from "date-fns/formatDistanceToNow";
-// import format from "date-fns/format";
-// import koLocale from "date-fns/locale/ko";
-
-// export const formatDate = (date) => {
-//   const d = new Date(date);
-//   const now = Date.now();
-//   const diff = now - new Date(date).getTime();
-//   // less than 5 minutes
-//   if (diff < 1000 * 60 * 5) {
-//     return "방금 전";
-//   }
-//   if (diff < 1000 * 60 * 60 * 24) {
-//     return distanceInWordsToNow(d, { addSuffix: true, locale: koLocale });
-//   }
-//   if (diff < 1000 * 60 * 60 * 36) {
-//     return "어제";
-//   }
-//   if (diff < 1000 * 60 * 60 * 24 * 7) {
-//     return distanceInWordsToNow(d, { addSuffix: true, locale: koLocale });
-//   }
-//   return format(d, "yyyy년 M월 d일");
-// };
-
 export const getScrollTop = () => {
   if (!document.body) return 0;
   const scrollTop = document.documentElement
@@ -38,24 +14,11 @@ export const getScrollTop = () => {
 //   return scrollHeight - innerHeight - scrollTop;
 // };
 
-// export function createReducer(handlers, initialState) {
-//   return (state, action) => {
-//     const handler = handlers[action.type];
-//     if (!handler) return state;
-//     return handler(state, action);
-//   };
-// }
-
 // export function updateKey(state, key, value) {
 //   return {
 //     ...state,
 //     [key]: value,
 //   };
-// }
-
-// export function detectJSDOM() {
-//   if (typeof navigator === "undefined") return false;
-//   return navigator.userAgent.includes("jsdom");
 // }
 
 // export const escapeForUrl = (text) => {

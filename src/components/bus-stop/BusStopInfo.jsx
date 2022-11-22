@@ -8,19 +8,27 @@ import CheckBox from "@components/common/CheckBox";
 import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useRecoilState } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
-import MainResponsive from "@components/main/MainResponsive";
 import Toast from "../common/Toast";
+import Header from "../base/Header";
+import toast from "react-hot-toast";
+
+import {
+  BusStopInfoBox,
+  Wrapper,
+  BusStopInfoTextBox,
+  BusStopInfoText,
+  MapBtn,
+  HeaderBox,
+  FavListBox,
+} from "./BusStopInfoStyle";
 
 const BusStopInfo = ({ list = [], type = [] }) => {
   const navigate = useNavigate();
   const [selectedBusList, setSelectedBusList] = useState([]);
   const [busListData, setBusListData] = useState([]);
   const [checkedItems, setCheckedItems] = useState(new Set());
-  const [checked, setChecked] = useState(false);
   const [filteredBusStation, setFilteredBusStation] =
     useRecoilState(filteredBusStop);
 
@@ -57,16 +65,14 @@ const BusStopInfo = ({ list = [], type = [] }) => {
     if (isChecked) {
       checkedItems.add(target);
       setCheckedItems(checkedItems);
-      editChecked();
     } else if (!isChecked && checkedItems.has(target)) {
       checkedItems.delete(target);
       setCheckedItems(checkedItems);
     }
   };
 
-  const editChecked = () => {
-    setChecked(!checked);
-    return checked;
+  const getToast = () => {
+    notify();
   };
 
   const addBusInFavList = () => {
@@ -105,16 +111,29 @@ const BusStopInfo = ({ list = [], type = [] }) => {
     }
   };
 
+  const notify = () =>
+    toast("즐겨찾기가 수정되었습니다.", {
+      // Change colors of success/error/loading icon
+      iconTheme: {
+        primary: "#000",
+        secondary: "#fff",
+      },
+      // Aria
+      ariaProps: {
+        role: "status",
+        "aria-live": "polite",
+      },
+    });
+
   return (
     <>
-      <Header>
-        <ArrowBackIosIcon onClick={() => navigate(-1)} />
-        <StarOutlineIcon />
-      </Header>
+      <HeaderBox>
+        <Header />
+      </HeaderBox>
       <BusStopInfoBox>
         <BusStopInfoTextBox>
           <BusStopInfoText>
-            <Toast checked={checked} />
+            <Toast />
             <p>{list.name || filteredBusStation.name}</p>
           </BusStopInfoText>
           <MapBtn onClick={() => navigate(-1)}>
@@ -133,6 +152,7 @@ const BusStopInfo = ({ list = [], type = [] }) => {
                   />
                   <CheckBoxContents>
                     <CheckBox
+                      getToast={getToast}
                       type={type === "FAVORITE_LIST" ? type : ""}
                       bus={bus}
                       checkedItemHandler={checkedItemHandler}
@@ -151,65 +171,6 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   );
 };
 
-const BusStopInfoBox = styled.div`
-  width: 100%;
-`;
-
-const Wrapper = styled.div`
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #e0e0e0;
-    border-radius: 10px;
-    height: 15%;
-  }
-`;
 const CheckBoxContents = styled.div``;
-const FavListBox = styled.div`
-  position: relative;
-`;
-const BusStopInfoTextBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.15);
-  padding: 2rem 0;
-`;
-const BusStopInfoText = styled.div`
-  font-size: 24px;
-`;
-
-const MapBtn = styled.div`
-  margin-top: 1rem;
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 1px solid #e0e2e7;
-  position: relative;
-  svg {
-    font-size: 0.8rem;
-    position: absolute;
-    left: 22%;
-    top: 20%;
-  }
-`;
-
-const Header = styled(MainResponsive)`
-  padding: 1rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  svg {
-    font-size: 1.3rem;
-  }
-`;
 
 export default BusStopInfo;

@@ -1,14 +1,14 @@
-import busBadge from "@static/svg/bus-badge.svg";
 import styled, { css } from "styled-components";
-import Bus from "./Bus";
-import busStopIcon from "@static/svg/bus-stop-icon.svg";
-import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
-import Button from "../common/Button";
-import zIndexes from "@lib/styles/zIndexes";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
-import media from "../../lib/styles/media";
+import zIndexes from "@lib/styles/zIndexes";
+import Bus from "./Bus";
+import Button from "@components/common/Button";
+import busStopIcon from "@static/svg/bus-stop-icon.svg";
+import busBadge from "@static/svg/bus-badge.svg";
+import media from "@lib/styles/media";
 
 const FavoriteList = ({ favoriteList }) => {
   const [filteredBusStation, setFilteredBusStation] =

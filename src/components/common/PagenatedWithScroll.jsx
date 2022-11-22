@@ -1,11 +1,7 @@
-import { useEffect, useCallback, useRef } from 'react';
-import { getScrollBottom } from '../../lib/utils';
+import { useEffect, useCallback, useRef } from "react";
+import { getScrollBottom } from "../../lib/utils";
 
-
-const PaginateWithScroll = ({
-  cursor,
-  onLoadMore,
-}) => {
+const PaginateWithScroll = ({ cursor, onLoadMore }) => {
   const lastCursor = useRef(null);
 
   const loadMore = useCallback(() => {
@@ -23,11 +19,11 @@ const PaginateWithScroll = ({
   }, [loadMore]);
 
   useEffect(() => {
-    console.log('register scroll event');
-    window.addEventListener('scroll', onScroll);
+    console.log("register scroll event");
+    window.addEventListener("scroll", onScroll);
     return () => {
-      console.log('unregister scroll event');
-      window.removeEventListener('scroll', onScroll);
+      console.log("unregister scroll event");
+      window.removeEventListener("scroll", onScroll);
     };
   }, [onScroll]);
   return null;

@@ -9,14 +9,16 @@ const CheckBox = ({
   alreadySelectedBusList = [],
   type,
   addBusInFavList,
+  getToast,
 }) => {
-  const [bChecked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
   const checkBoxRef = useRef();
 
   const checkHandler = ({ target }) => {
-    setChecked(!bChecked);
+    setChecked(!checked);
     checkedItemHandler(bus, target.checked);
     addBusInFavList();
+    getToast();
   };
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const CheckBox = ({
     if (setChecked && checkedItemHandler) {
       checkedItemHandler(bus, checkBoxRef.current.checked);
     }
-  }, [bChecked]);
+  }, [checked]);
 
   return (
     <Wrapper>
@@ -40,7 +42,7 @@ const CheckBox = ({
           ref={checkBoxRef}
           type='checkbox'
           name={bus ? `${bus.id}` : null}
-          checked={bChecked}
+          checked={checked}
           onChange={(e) => checkHandler(e)}
         />
       </StyledCheckBox>

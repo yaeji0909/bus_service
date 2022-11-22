@@ -15,25 +15,25 @@ const BottomSheetBodySkeleton = () => {
       <BottomSheetBodyBox ref={bottomBody}>
         {favoriteBusStopList &&
           favoriteBusStopList.map((list, index) => (
-            <FavList key={index}>
-              <FavoriteListBox onlyBusStop={!list.bus ? true : ""}>
+            <FavoriteListWrapperBox key={index}>
+              <FavoriteList onlyBusStop={!list.bus ? true : ""}>
                 <Skeleton className='title-skeleton' marginRight='4rem' />
                 <Skeleton className='button-skeleton' />
                 <Skeleton className='sub-title-skeleton' />
                 {list.bus && <Skeleton className='contents-box-skeleton' />}
-              </FavoriteListBox>
-            </FavList>
+              </FavoriteList>
+            </FavoriteListWrapperBox>
           ))}
       </BottomSheetBodyBox>
     </Wrapper>
   );
 };
 
-const FavList = styled.div`
+const FavoriteListWrapperBox = styled.div`
   padding: 0.5rem;
 `;
 
-const FavoriteListBox = styled.div`
+const FavoriteList = styled.div`
   width: 100%;
   height: 20vh;
   box-shadow: 0px 4px 15px rgba(65, 97, 119, 0.2);

@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({ title }) => {
   const navigate = useNavigate();
-
   return (
     <Block>
-      <ArrowBackIosIcon className='arrow-btn' onClick={() => navigate(0)} />
+      <ArrowBackIosIcon className='arrow-btn' onClick={() => navigate(-1)} />
       <Inner>{title}</Inner>
     </Block>
   );
@@ -18,7 +17,6 @@ const Block = styled.div`
   width: 100%;
   height: 4rem;
   position: relative;
-  border-bottom: 1px solid #b2b3b9;
   .arrow-btn {
     font-size: 1.4rem;
     position: absolute;

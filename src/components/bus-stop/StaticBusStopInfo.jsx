@@ -1,16 +1,21 @@
-import styled from "styled-components";
 import { useQuery } from "react-query";
-import MapIcon from "@mui/icons-material/Map";
 import { useNavigate } from "react-router-dom";
-import { getBusStopInfo } from "@api/mapApi";
 import { useState, useEffect } from "react";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import MainResponsive from "@components/main/MainResponsive";
-import StaticBusInfo from "./StaticBusInfo";
+import { Fragment } from "react";
+import { getBusStopInfo } from "@api/mapApi";
 import { useRecoilValue } from "recoil";
 import { clickedBusStop } from "@recoil/map";
-import { Fragment } from "react";
+import StaticBusInfo from "./StaticBusInfo";
+import MapIcon from "@mui/icons-material/Map";
+import ActiveHeader from "../base/ActiveHeader";
+import {
+  BusStopInfoBox,
+  Wrapper,
+  BusStopInfoTextBox,
+  BusStopInfoText,
+  MapBtn,
+  HeaderBox,
+} from "./BusStopInfoStyle";
 
 const StaticBusStopInfo = () => {
   const navigate = useNavigate();
@@ -25,7 +30,6 @@ const StaticBusStopInfo = () => {
       refetchOnMount: false,
       refetchOnReconnect: false,
       staleTime: 5000,
-      cacheTime: Infinity,
       enabled: !!clickedBusStation,
     }
   );
@@ -60,10 +64,9 @@ const StaticBusStopInfo = () => {
 
   return (
     <>
-      <Header>
-        <ArrowBackIosIcon onClick={() => navigate(-1)} />
-        <StarOutlineIcon />
-      </Header>
+      <HeaderBox>
+        <ActiveHeader busStopInfo={clickedBusStation} />
+      </HeaderBox>
       <BusStopInfoBox>
         <BusStopInfoTextBox>
           <BusStopInfoText>
@@ -99,64 +102,5 @@ const StaticBusStopInfo = () => {
     </>
   );
 };
-
-const BusStopInfoBox = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
-const Wrapper = styled.div`
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #e0e0e0;
-    border-radius: 10px;
-    height: 15%;
-  }
-`;
-
-const BusStopInfoTextBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.15);
-  padding: 2rem 0;
-`;
-const BusStopInfoText = styled.div`
-  font-size: 24px;
-`;
-
-const MapBtn = styled.div`
-  margin-top: 1rem;
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 1px solid #e0e2e7;
-  position: relative;
-  svg {
-    font-size: 0.8rem;
-    position: absolute;
-    left: 22%;
-    top: 20%;
-  }
-`;
-
-const Header = styled(MainResponsive)`
-  padding: 1rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  svg {
-    font-size: 1.3rem;
-  }
-`;
 
 export default StaticBusStopInfo;

@@ -1,12 +1,12 @@
 import "react-spring-bottom-sheet/dist/style.css";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "react-query";
 import { useState, useRef, useEffect } from "react";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import { getFavoriteList } from "@api/favoriteApi";
 import { favBusStopList } from "@recoil/favorites";
 import { selectedCity } from "@recoil/map";
-import { useQuery } from "react-query";
 import useDebounce from "@components/home/hooks/useDebounce";
 import BottomSheetHeader from "@components/home/bottom-sheet/BottomSheetHeader";
 import BottomSheetBody from "@components/home/bottom-sheet/BottomSheetBody";

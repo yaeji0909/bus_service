@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import StarIcon from "@mui/icons-material/Star";
 // import { useRecoilState } from "recoil";
 // import { selectedCity } from "../../recoil/map";
 import useToggle from "@lib/hooks/useToggle";
@@ -70,9 +71,9 @@ const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
       </List>
       <ImgBox>
         {clickToggle ? (
-          <StarOutlineIcon alt={"starBtn"} color='#f2e528' fill='#f2e528' />
+          <StarIcon style={{ color: "#f2e528", fill: "#f2e528" }} />
         ) : (
-          <StarOutlineIcon alt={"starBtn"} />
+          <StarOutlineIcon />
         )}
       </ImgBox>
     </SearchContentsList>
