@@ -1,10 +1,10 @@
-import MenuIcon from "@mui/icons-material/Menu";
 import styled from "styled-components";
-import React from "react";
-import media from "../../../lib/styles/media";
+import media from "@lib/styles/media";
+import MenuIcon from "@mui/icons-material/Menu";
+
 const BottomSheetHeader = ({ onClick }) => (
   <Wrapper>
-    <div
+    <Header
       onClick={onClick}
       flex='0 0 auto'
       display='flex'
@@ -13,7 +13,7 @@ const BottomSheetHeader = ({ onClick }) => (
       padding={2}
     >
       <MenuIcon style={{ color: "transparent" }} />
-    </div>
+    </Header>
     <Title>즐겨찾기</Title>
   </Wrapper>
 );
@@ -25,6 +25,9 @@ const Wrapper = styled.div`
     height: 10vh;
   }
 `;
+
+const Header = styled.div``;
+
 const Title = styled.div`
   color: #3f4150;
   font-size: 20px;

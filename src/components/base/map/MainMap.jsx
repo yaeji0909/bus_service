@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Map } from "react-kakao-maps-sdk";
-import EventMarker from "./EventMarker";
 import { useQuery } from "react-query";
-import { getBusStopByLocation } from "@api/mapApi";
+import { Map } from "react-kakao-maps-sdk";
 import { MapMarker } from "react-kakao-maps-sdk";
-import userIcon from "@static/svg/user-position-icon.svg";
+import { getBusStopByLocation } from "@api/mapApi";
+import EventMarker from "./EventMarker";
 import PositionButton from "./PositionButton";
+import userIcon from "@static/svg/user-position-icon.svg";
 
 const MapContainer = () => {
   const [mapState, setMapState] = useState({
@@ -81,7 +81,6 @@ const MapContainer = () => {
       setStation(positionData);
       setMarkers(editDataToMarker());
     }
-    console.log("render");
   }, [positionData, station, markers]);
 
   return (

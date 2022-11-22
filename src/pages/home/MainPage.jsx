@@ -21,11 +21,10 @@ function MainPage() {
   const city = useRecoilValue(selectedCity);
   const setFavoriteBusStopList = useSetRecoilState(favBusStopList);
   const sheetRef = useRef();
+  const open = useDebounce(loadingOpen, 1000);
   const { data: favoriteList = "" } = useQuery(["favoriteList", 1], () =>
     getFavoriteList(city)
   );
-
-  const open = useDebounce(loadingOpen, 1000);
 
   const handleButtonSheet = () => {
     if (sheetRef.current.height > 120) {
@@ -66,7 +65,6 @@ function MainPage() {
     </Wrapper>
   );
 }
-
 const Wrapper = styled(MainResponsive)``;
 
 export default MainPage;

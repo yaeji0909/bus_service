@@ -1,14 +1,13 @@
 import { useRef } from "react";
 import styled, { css } from "styled-components";
 import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { favBusStopList } from "@recoil/favorites";
-import Skeleton from "../../common/Skeleton";
+import Skeleton from "@components/common/Skeleton";
 import media from "@lib/styles/media";
 
 const BottomSheetBodySkeleton = () => {
-  const [favoriteBusStopList, setFavoriteBusStopList] =
-    useRecoilState(favBusStopList);
+  const favoriteBusStopList = useRecoilValue(favBusStopList);
   const bottomBody = useRef(null);
 
   return (

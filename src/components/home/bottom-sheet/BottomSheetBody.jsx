@@ -1,16 +1,16 @@
-import { useLayoutEffect, useRef } from "react";
-import useStayScrolled from "react-stay-scrolled";
 import styled from "styled-components";
-import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
-// import { HiOutlineArrowUp } from "@react-icons/all-files/hi/HiOutlineArrowUp";
-import CachedIcon from "@mui/icons-material/Cached";
-import exampleImg from "@static/images/favorites-example.png";
-import FavoriteList from "@components/favorites/FavoriteList";
+import { useLayoutEffect, useRef } from "react";
 import { useQuery } from "react-query";
 import { getFavoriteList } from "@api/favoriteApi";
 import { useRecoilState } from "recoil";
 import { selectedCity } from "@recoil/map";
-import media from "../../../lib/styles/media";
+import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
+import useStayScrolled from "react-stay-scrolled";
+import media from "@lib/styles/media";
+import FavoriteList from "@components/favorites/FavoriteList";
+import CachedIcon from "@mui/icons-material/Cached";
+import exampleImg from "@static/images/favorites-example.png";
+// import NorthIcon from "@mui/icons-material/North";
 
 const BottomSheetBody = () => {
   const [city, setCity] = useRecoilState(selectedCity);
@@ -19,7 +19,6 @@ const BottomSheetBody = () => {
 
   useLayoutEffect(() => {
     scrollBottom();
-    console.log("bottom");
   }, [scrollBottom]);
 
   const { data: favoriteListData = "" } = useQuery(["favoriteList", 0], () =>
@@ -29,8 +28,9 @@ const BottomSheetBody = () => {
   return (
     <Wrapper>
       <BottomSheetBodyBox ref={bottomBody}>
-        {favoriteListData && <FavoriteList favoriteList={favoriteListData} />}
-        {!favoriteListData && (
+        {favoriteListData ? (
+          <FavoriteList favoriteList={favoriteListData} />
+        ) : (
           <ExampleImgBox>
             <img src={exampleImg} alt='example-img' />
             <p>
@@ -41,7 +41,7 @@ const BottomSheetBody = () => {
           </ExampleImgBox>
         )}
         <ButtonBox>
-          {/* <HiOutlineArrowUp className='to-top-btn' /> */}
+          {/* <NorthIcon className='to-top-btn' /> */}
           <CachedIcon className='refresh-btn' />
         </ButtonBox>
       </BottomSheetBodyBox>
