@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import StaticBusStopInfo from "../../components/bus-stop/StaticBusStopInfo";
+import StaticBusStopInfo from "@components/bus-stop/StaticBusStopInfo";
 
 function BusStopInfoPage() {
   // 주변 정류소 클릭시

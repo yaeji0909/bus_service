@@ -11,9 +11,8 @@ import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import { useRecoilState } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
 import Toast from "../common/Toast";
-import Header from "../base/Header";
 import toast from "react-hot-toast";
-
+import ActiveHeader from "@components/base/ActiveHeader";
 import {
   BusStopInfoBox,
   Wrapper,
@@ -113,7 +112,6 @@ const BusStopInfo = ({ list = [], type = [] }) => {
 
   const notify = () =>
     toast("즐겨찾기가 수정되었습니다.", {
-      // Change colors of success/error/loading icon
       iconTheme: {
         primary: "#000",
         secondary: "#fff",
@@ -128,7 +126,7 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   return (
     <>
       <HeaderBox>
-        <Header />
+        <ActiveHeader busStopInfo={list} />
       </HeaderBox>
       <BusStopInfoBox>
         <BusStopInfoTextBox>

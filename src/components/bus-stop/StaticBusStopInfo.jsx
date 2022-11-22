@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 import { clickedBusStop } from "@recoil/map";
 import StaticBusInfo from "./StaticBusInfo";
 import MapIcon from "@mui/icons-material/Map";
-import ActiveHeader from "../base/ActiveHeader";
+import ActiveHeader from "@components/base/ActiveHeader";
 import {
   BusStopInfoBox,
   Wrapper,

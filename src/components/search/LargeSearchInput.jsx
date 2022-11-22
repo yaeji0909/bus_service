@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import SearchInput from "@components/search/SearchInput";
 import styled from "styled-components";
 import zIndexes from "@lib/styles/zIndexes";
@@ -23,13 +22,11 @@ const StyledSearchInput = styled(SearchInput)`
   }
 `;
 
-const LargeSearchInput = ({ initialKeyword }) => {
-  const onSearch = useCallback((keyword) => {}, []);
-
+const LargeSearchInput = () => {
   return (
     <>
       <Link to='/search'>
-        <StyledSearchInput onSearch={onSearch} initial={initialKeyword} large />
+        <StyledSearchInput large />
       </Link>
     </>
   );

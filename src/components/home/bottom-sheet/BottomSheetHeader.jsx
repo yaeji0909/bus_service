@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import media from "@lib/styles/media";
 import MenuIcon from "@mui/icons-material/Menu";
-
 const BottomSheetHeader = ({ onClick }) => (
   <Wrapper>
     <Header

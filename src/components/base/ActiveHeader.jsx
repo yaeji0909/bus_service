@@ -7,12 +7,13 @@ import { useRecoilValue } from "recoil";
 import { selectedCity } from "@recoil/map";
 import useToggle from "@lib/hooks/useToggle";
 import { favBusStopList } from "@recoil/favorites";
-import { useEffect } from "react";
 
 const ActiveHeader = ({ busStopInfo }) => {
   const [clickToggle, setClickToggle] = useToggle(false);
   const city = useRecoilValue(selectedCity);
   const favoriteBusStopList = useRecoilValue(favBusStopList);
+
+  console.log(busStopInfo);
 
   //   const filterDefaultList = () => {
   //     if (favoriteBusStopList.map((e) => e.station === busStopInfo.stopId))

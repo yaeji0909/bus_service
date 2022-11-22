@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   ::-webkit-scrollbar-track {
     background: #ffffff;
   }
-
   ::-webkit-scrollbar-thumb {
     background: #e0e0e0;
     border-radius: 10px;

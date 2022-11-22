@@ -1,7 +1,6 @@
 import ToggleSwitch from "../common/ToggleSwitch";
 import styled from "styled-components";
 import { useState } from "react";
-import CheckBox from "../common/CheckBox";
 import CommonCheckBox from "./CommonCheckBox";
 
 const cities = [

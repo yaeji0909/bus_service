@@ -5,9 +5,10 @@ import { useQuery } from "react-query";
 import { getClickedBusInfo } from "@api/mapApi";
 import Timer from "../home/utils/Timer";
 import media from "../../lib/styles/media";
-import { useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const Bus = ({ list = [], bus = [] }) => {
+  const [arrivalTime, setArrivalTime] = useState(0);
   // 즐겨찾기 추가되있는 버스 도착 정보 조회
   const { data: busArrivalInfo = [] } = useQuery(
     ["busArrivalInfo", bus.id],
@@ -20,7 +21,10 @@ const Bus = ({ list = [], bus = [] }) => {
     return result;
   }, []);
 
-  const result = editSecondsToMinutes(busArrivalInfo.arrtime);
+  useEffect(() => {
+    const result = editSecondsToMinutes(busArrivalInfo.arrtime);
+    setArrivalTime(result);
+  }, []);
 
   return (
     <Wrapper>
@@ -35,9 +39,9 @@ const Bus = ({ list = [], bus = [] }) => {
               {bus.no}
             </span>
           )}
-          {result ? (
+          {arrivalTime ? (
             <span>
-              <Timer mm={result} ss={0} />
+              <Timer mm={arrivalTime} ss={0} />
             </span>
           ) : (
             <span>도착정보 없음</span>
