@@ -10,11 +10,16 @@ import { selectedCity } from "@recoil/map";
 import useDebounce from "@components/home/hooks/useDebounce";
 import BottomSheetHeader from "@components/home/bottom-sheet/BottomSheetHeader";
 import BottomSheetBody from "@components/home/bottom-sheet/BottomSheetBody";
-import LargeSearchInput from "@components/search/LargeSearchInput";
+// import LargeSearchInput from "@components/search/LargeSearchInput";
 import MainMap from "@components/base/map/MainMap";
 import BottomSheetBodySkeleton from "@components/home/bottom-sheet/BottomSheetBodySkeleton";
 import styled from "styled-components";
 import MainResponsive from "@components/main/MainResponsive";
+import React from "react";
+
+const LargeSearchInput = React.lazy(() =>
+  import("@components/search/LargeSearchInput.jsx")
+);
 
 function MainPage() {
   const [loadingOpen, setLoadingOpen] = useState(false);

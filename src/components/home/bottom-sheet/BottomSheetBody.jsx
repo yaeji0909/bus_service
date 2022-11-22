@@ -7,10 +7,14 @@ import { selectedCity } from "@recoil/map";
 import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
 import useStayScrolled from "react-stay-scrolled";
 import media from "@lib/styles/media";
-import FavoriteList from "@components/favorites/FavoriteList";
+import React from "react";
+// import FavoriteList from "@components/favorites/FavoriteList";
 import CachedIcon from "@mui/icons-material/Cached";
 import exampleImg from "@static/images/favorites-example.png";
 // import NorthIcon from "@mui/icons-material/North";
+const FavoriteList = React.lazy(() =>
+  import("@components/favorites/FavoriteList.jsx")
+);
 
 const BottomSheetBody = () => {
   const city = useRecoilValue(selectedCity);
