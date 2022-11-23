@@ -18,7 +18,7 @@ const MapContainer = () => {
   const map = useRef();
 
   const { data: positionData } = useQuery(
-    ["locations", 1],
+    ["locations"],
     () => getBusStopByLocation(mapState.center.lat, mapState.center.lng),
     {
       enabled: mapState.center.lat !== 33.452613,
@@ -84,50 +84,48 @@ const MapContainer = () => {
   }, [positionData, station, markers]);
 
   return (
-    <>
-      <Map
-        center={mapState.center}
-        isPanto={mapState.isPanto}
-        ref={map}
-        style={{
-          // 지도의 크기
-          width: "100%",
-          height: "100vh",
-          zIndex: 1,
-          position: "relative",
-        }}
-        level={4}
-      >
-        {markers.map((marker, index) => (
-          <EventMarker
-            key={index}
-            position={marker.latlng}
-            marker={marker}
-            markers={markers}
-          />
-        ))}
-        <MapMarker
-          position={{
-            lat: mapState.center.lat,
-            lng: mapState.center.lng,
-          }}
-          image={{
-            src: userIcon,
-            size: {
-              width: 90,
-              height: 90,
-            },
-            options: {
-              offset: {
-                x: 10,
-                y: 10,
-              },
-            },
-          }}
+    <Map
+      center={mapState.center}
+      isPanto={mapState.isPanto}
+      ref={map}
+      style={{
+        // 지도의 크기
+        width: "100%",
+        height: "100vh",
+        zIndex: 1,
+        position: "relative",
+      }}
+      level={4}
+    >
+      {markers.map((marker, index) => (
+        <EventMarker
+          key={index}
+          position={marker.latlng}
+          marker={marker}
+          markers={markers}
         />
-        <PositionButton toggleHandler={toggleHandler} toggle={toggle} />
-      </Map>
-    </>
+      ))}
+      <MapMarker
+        position={{
+          lat: mapState.center.lat,
+          lng: mapState.center.lng,
+        }}
+        image={{
+          src: userIcon,
+          size: {
+            width: 90,
+            height: 90,
+          },
+          options: {
+            offset: {
+              x: 10,
+              y: 10,
+            },
+          },
+        }}
+      />
+      <PositionButton toggleHandler={toggleHandler} toggle={toggle} />
+    </Map>
   );
 };
 

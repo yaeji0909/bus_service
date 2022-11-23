@@ -10,9 +10,10 @@ import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import { useRecoilState } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
-import Toast from "../common/Toast";
+// import Toast from "@components/common/Toast";
 import toast from "react-hot-toast";
 import ActiveHeader from "@components/base/ActiveHeader";
+import React from "react";
 import {
   BusStopInfoBox,
   Wrapper,
@@ -22,6 +23,8 @@ import {
   HeaderBox,
   FavListBox,
 } from "./BusStopInfoStyle";
+
+const Toast = React.lazy(() => import("@components/common/Toast.jsx"));
 
 const BusStopInfo = ({ list = [], type = [] }) => {
   const navigate = useNavigate();

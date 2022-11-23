@@ -5,15 +5,24 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { searchBusStop } from "@api/BusServiceApi";
-import SearchInput from "@components/search/SearchInput";
-import SearchResult from "@components/search/SearchResult";
+import React from "react";
+// import SearchInput from "@components/search/SearchInput";
+// import SearchResult from "@components/search/SearchResult";
 import { favBusStopList } from "@recoil/favorites";
 import { selectedCity } from "@recoil/map";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CancelIcon from "@mui/icons-material/Cancel";
 import busStop from "@static/images/bus-stop.png";
 
-function SearchPage() {
+const SearchInput = React.lazy(() =>
+  import("@components/search/SearchInput.jsx")
+);
+
+const SearchResult = React.lazy(() =>
+  import("@components/search/SearchResult.jsx")
+);
+
+const SearchPage = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const navigate = useNavigate();
@@ -72,7 +81,7 @@ function SearchPage() {
       </SearchContentsBox>
     </>
   );
-}
+};
 const SearchInputBox = styled.div`
   display: flex;
   align-items: center;

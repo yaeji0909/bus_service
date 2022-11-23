@@ -44,17 +44,6 @@ const SearchInputBlock = styled.div`
   }
 
   ${(props) =>
-    props.focus &&
-    css`
-      svg {
-        fill: ${palette.gray9};
-      }
-      input {
-        color: ${themedPalette.text1};
-      }
-    `}
-
-  ${(props) =>
     props.large &&
     css`
       height: 2rem;

@@ -12,6 +12,7 @@ import React from "react";
 import CachedIcon from "@mui/icons-material/Cached";
 import exampleImg from "@static/images/favorites-example.png";
 // import NorthIcon from "@mui/icons-material/North";
+
 const FavoriteList = React.lazy(() =>
   import("@components/favorites/FavoriteList.jsx")
 );
