@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import media from "@lib/styles/media";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -12,7 +13,29 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Spoqa Han Sans Neo", "sans-serif";
     font-size: $font-size-16;
   }
-  
+
+  :root {
+    ${media.large}{
+    --rsbs-max-w: 65.1vw;
+    --rsbs-ml: 14rem;
+    }
+    ${media.xlarge}{
+    --rsbs-max-w: 65vw;
+    --rsbs-ml: 15.75rem;
+    }
+    --rsbs-handle-bg: #fff;
+    --rsbs-ml: env(safe-area-inset-left);
+    --rsbs-mr: env(safe-area-inset-right);
+    --rsbs-antigap-scale-y: 0;
+    --rsbs-backdrop-bg: #fff;
+    --rsbs-bg: #fff;
+    --rsbs-backdrop-opacity: 1;
+    --rsbs-content-opacity: 1;
+    --rsbs-overlay-h: 0px;
+    --rsbs-overlay-rounded: 16px;
+    --rsbs-overlay-translate-y: 0px;
+  }
+
   body {
     font-family: ;
     color: $;

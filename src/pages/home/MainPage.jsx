@@ -10,7 +10,6 @@ import { selectedCity } from "@recoil/map";
 import useDebounce from "@components/home/hooks/useDebounce";
 import BottomSheetHeader from "@components/home/bottom-sheet/BottomSheetHeader";
 import BottomSheetBody from "@components/home/bottom-sheet/BottomSheetBody";
-// import LargeSearchInput from "@components/search/LargeSearchInput";
 import MainMap from "@components/base/map/MainMap";
 import BottomSheetBodySkeleton from "@components/home/bottom-sheet/BottomSheetBodySkeleton";
 import styled from "styled-components";
@@ -52,24 +51,28 @@ function MainPage() {
       </Helmet>
       <LargeSearchInput />
       <MainMap />
-      <BottomSheet
-        open
-        blocking={false}
-        ref={sheetRef}
-        scrollLocking={true}
-        snapPoints={({ headerHeight, maxHeight }) => [
-          headerHeight,
-          (maxHeight - 56) * 0.65,
-          maxHeight - 56,
-        ]}
-        onSpringStart={(event) => event.type === "SNAP" && setLoadingOpen(true)}
-        header={<BottomSheetHeader onClick={handleButtonSheet} />}
-      >
-        {!open ? <BottomSheetBody /> : <BottomSheetBodySkeleton />}
-      </BottomSheet>
+      <BottomSheetWrapper>
+        <BottomSheet
+          open
+          blocking={false}
+          ref={sheetRef}
+          scrollLocking={true}
+          snapPoints={({ headerHeight, maxHeight }) => [
+            headerHeight,
+            (maxHeight - 56) * 0.65,
+            maxHeight - 56,
+          ]}
+          onSpringStart={(event) =>
+            event.type === "SNAP" && setLoadingOpen(true)
+          }
+          header={<BottomSheetHeader onClick={handleButtonSheet} />}
+        >
+          {open ? <BottomSheetBody /> : <BottomSheetBodySkeleton />}
+        </BottomSheet>
+      </BottomSheetWrapper>
     </Wrapper>
   );
 }
 const Wrapper = styled(MainResponsive)``;
-
+const BottomSheetWrapper = styled.div``;
 export default MainPage;

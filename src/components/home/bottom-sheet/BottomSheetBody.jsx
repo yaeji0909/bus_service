@@ -17,7 +17,7 @@ const FavoriteList = React.lazy(() =>
   import("@components/favorites/FavoriteList.jsx")
 );
 
-const BottomSheetBody = () => {
+const BottomSheetBody = ({}) => {
   const city = useRecoilValue(selectedCity);
   const bottomBody = useRef(null);
   const { scrollBottom } = useStayScrolled(bottomBody);

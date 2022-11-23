@@ -51,12 +51,11 @@ const SearchInputBlock = styled.div`
       padding: 0 1.5rem;
       background: #ffffff;
       input {
-        padding-left: 2rem;
+        padding-left: 1.5rem;
         line-height: 2rem;
         height: auto;
         background: transparent;
       }
-
       ${media.small} {
         height: 2.25rem;
         padding-left: 1rem;
@@ -138,7 +137,7 @@ const SearchInput = ({
         value={value}
         autoFocus
       />
-      {large && <MenuIcon className='hamburgerBtn' />}
+      {large && <MenuIcon className='hamburger-btn' />}
     </SearchInputBlock>
   );
 };

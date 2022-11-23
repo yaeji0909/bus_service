@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
 import zIndexes from "@lib/styles/zIndexes";
 import Bus from "./Bus";
@@ -11,8 +11,7 @@ import busBadge from "@static/svg/bus-badge.svg";
 import media from "@lib/styles/media";
 
 const FavoriteList = ({ favoriteList }) => {
-  const [filteredBusStation, setFilteredBusStation] =
-    useRecoilState(filteredBusStop);
+  const setFilteredBusStation = useSetRecoilState(filteredBusStop);
 
   const navigate = useNavigate();
 
@@ -84,7 +83,6 @@ const FavoriteList = ({ favoriteList }) => {
 };
 
 const FavoriteListBox = styled.div`
-  height: 22vh;
   margin: 0.4rem;
   box-shadow: 0px 4px 15px rgba(65, 97, 119, 0.2);
   border-radius: 10px;
@@ -94,7 +92,7 @@ const FavoriteListBox = styled.div`
   ${(props) =>
     props.onlyBusStop &&
     css`
-      height: 10vh;
+      padding: 1.2rem 0rem;
     `};
 `;
 
@@ -129,6 +127,7 @@ const AddBusButton = styled(Button)`
   z-index: ${zIndexes.BottomSheet};
   font-weight: 300;
   font-size: 14px;
+
   ${(props) =>
     props.blue &&
     css`
@@ -146,6 +145,7 @@ const BusListBox = styled.div`
   algin-items: center;
   position: relative;
   padding: 0 0.5rem;
+
   .bus-stop {
     left: 0%;
     bottom: 0%;

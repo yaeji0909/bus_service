@@ -11,7 +11,7 @@ const Block = styled.div`
   margin-right: auto;
   width: 100vw;
   ${mediaQuery(1200)} {
-    width: 70vw;
+    width: 65vw;
   }
 `;
 

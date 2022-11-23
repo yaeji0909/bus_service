@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "@lib/styles/media";
 
 export const solidPseudo = css`
   content: "";
@@ -15,9 +16,25 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  ${media.small} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ${media.large} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const BottomSheetBodyBox = styled.div`
+  ${media.small} {
+    width: 90vw;
+  }
+  ${media.large} {
+    width: 50vw;
+  }
   ${flexColumn};
   flex-grow: 1;
   padding: 1rem;

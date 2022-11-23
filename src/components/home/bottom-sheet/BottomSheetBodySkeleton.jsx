@@ -17,8 +17,11 @@ const BottomSheetBodySkeleton = () => {
           favoriteBusStopList.map((list, index) => (
             <FavoriteListWrapperBox key={index}>
               <FavoriteList onlyBusStop={!list.bus ? true : ""}>
-                <Skeleton className='title-skeleton' marginRight='3rem' />
-                <Skeleton className='button-skeleton' />
+                <SkeletonRowBox>
+                  <Skeleton className='title-skeleton' marginRight='3rem' />
+                  <Skeleton className='button-skeleton' />
+                </SkeletonRowBox>
+
                 <Skeleton className='sub-title-skeleton' />
                 {list.bus && <Skeleton className='contents-box-skeleton' />}
               </FavoriteList>
@@ -31,11 +34,12 @@ const BottomSheetBodySkeleton = () => {
 
 const FavoriteListWrapperBox = styled.div`
   padding: 0.5rem;
+  ${media.large} {
+    width: 50vw;
+  }
 `;
 
 const FavoriteList = styled.div`
-  width: 100%;
-  height: 20vh;
   box-shadow: 0px 4px 15px rgba(65, 97, 119, 0.2);
   border-radius: 10px;
   position: relative;
@@ -48,36 +52,35 @@ const FavoriteList = styled.div`
     `}
 
   .title-skeleton {
-    padding: 0.9rem;
-    ${media.xxsmall} {
-      width: 45vw;
+    padding: 0.8rem;
+    width: 50%;
+    ${media.large} {
+      width: 30%;
     }
   }
 
   .sub-title-skeleton {
-    width: 55vw;
+    width: 70%;
     margin: 0;
     margin-top: 0.1rem;
     padding: 0.7rem;
-    ${media.xsmall} {
-      width: 60vw;
-    }
   }
 
   .button-skeleton {
-    width: 16vw;
+    width: 25%;
     padding: 0.9rem;
-    ${media.xsmall} {
-    }
   }
 
   .contents-box-skeleton {
+    width: 100%;
     margin: 0;
-    width: 80vw;
     padding: 2.5rem;
-    ${media.xsmall} {
-    }
   }
+`;
+
+const SkeletonRowBox = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default BottomSheetBodySkeleton;
