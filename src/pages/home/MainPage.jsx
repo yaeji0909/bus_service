@@ -65,7 +65,7 @@ function MainPage() {
         onSpringStart={(event) => event.type === "SNAP" && setLoadingOpen(true)}
         header={<BottomSheetHeader onClick={handleButtonSheet} />}
       >
-        {open ? <BottomSheetBody /> : <BottomSheetBodySkeleton />}
+        {!open ? <BottomSheetBody /> : <BottomSheetBodySkeleton />}
       </BottomSheet>
     </Wrapper>
   );

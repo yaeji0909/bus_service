@@ -41,14 +41,6 @@ const Block = styled.span`
   height: 1em;
 
   ${(props) =>
-    !props.noSpacing &&
-    css`
-      & + & {
-        margin-left: 0.5rem;
-      }
-    `}
-
-  ${(props) =>
     props.circle &&
     css`
       border-radius: 50%;

@@ -27,7 +27,6 @@ const SearchInputBlock = styled.div`
   }
   input {
     transition: all 0.125s ease-in;
-    font-size: 1rem;
     flex: 1;
     display: block;
     line-height: 1rem;
@@ -53,7 +52,6 @@ const SearchInputBlock = styled.div`
       background: #ffffff;
       input {
         padding-left: 2rem;
-        font-size: 1.5rem;
         line-height: 2rem;
         height: auto;
         background: transparent;

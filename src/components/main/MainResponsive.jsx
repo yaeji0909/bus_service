@@ -7,17 +7,11 @@ const MainResponsive = ({ className, children }) => {
 };
 
 const Block = styled.div`
-  width: 1728px;
   margin-left: auto;
   margin-right: auto;
-  ${mediaQuery(1919)} {
-    width: 1376px;
-  }
-  ${mediaQuery(1440)} {
-    width: 1024px;
-  }
-  ${mediaQuery(1056)} {
-    width: 100%;
+  width: 100vw;
+  ${mediaQuery(1200)} {
+    width: 70vw;
   }
 `;
 

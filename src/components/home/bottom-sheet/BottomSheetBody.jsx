@@ -69,7 +69,7 @@ const ButtonBox = styled.div`
   right: 5%;
   bottom: 14%;
   position: absolute;
-  ${media.xsmall} {
+  ${media.xxsamll} {
     bottom: 16%;
   }
   svg {

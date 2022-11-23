@@ -114,9 +114,6 @@ const ListTitle = styled.div`
       ${media.xsmall} {
         margin: 0.5rem 0.8rem;
       }
-      ${media.xxsmall} {
-        margin: 0.4rem 0.8rem;
-      }
     `}
 `;
 

@@ -88,7 +88,7 @@ const BusArrivalInfo = styled.div`
     color: #8c8d96;
     letter-spacing: 1px;
   }
-  ${media.xsmall} {
+  ${media.xxsamll} {
     span {
       font-size: 0.5rem;
     }
