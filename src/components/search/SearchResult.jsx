@@ -28,12 +28,10 @@ const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
 
   const editFavList = (clickToggle) => {
     if (clickToggle) {
-      console.log(clickToggle);
       setTimeout(() => {
         putMutation.mutate(resultList.city, resultList.id);
       }, 3000);
     } else if (!clickToggle) {
-      console.log(clickToggle);
       setTimeout(() => {
         deleteMutation.mutate(resultList.city, resultList.id);
       }, 3000);

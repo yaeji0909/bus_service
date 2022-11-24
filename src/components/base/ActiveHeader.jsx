@@ -15,12 +15,8 @@ const ActiveHeader = ({ busStopInfo, isAlreadyInFavList }) => {
   const clickEventHandler = () => {
     setClickToggle(!clickToggle);
     if (clickToggle === false) {
-      console.log(clickToggle);
-
       putMutation.mutate(city, busStopInfo.stopId);
     } else if (clickToggle === true) {
-      console.log(clickToggle);
-
       deleteMutation.mutate(city, busStopInfo.stopId);
     }
   };
