@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Fragment } from "react";
 import { getBusStopInfo } from "@api/mapApi";
 import { useRecoilValue } from "recoil";
-import { clickedBusStop } from "@recoil/main";
+import { favBusStopList, clickedBusStop } from "@recoil/main";
 import StaticBusInfo from "./StaticBusInfo";
 import MapIcon from "@mui/icons-material/Map";
 import ActiveHeader from "@components/base/ActiveHeader";
@@ -16,7 +16,6 @@ import {
   MapBtn,
   HeaderBox,
 } from "./BusStopInfoStyle";
-import { favBusStopList } from "@recoil/main";
 
 const StaticBusStopInfo = () => {
   const navigate = useNavigate();

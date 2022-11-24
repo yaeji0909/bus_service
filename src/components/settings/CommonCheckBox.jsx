@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const CommonCheckBox = ({ data = [], selectBus }) => {
+const CommonCheckBox = ({ data = [], onSelect }) => {
   // 체크박스 단일 선택
   const handleSingleCheck = (checked) => {
-    if (checked == data.routeno) {
-      selectBus(data);
+    if (checked == data.num) {
+      onSelect(data);
     }
   };
 

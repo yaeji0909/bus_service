@@ -9,8 +9,7 @@ import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { addFavoriteList } from "@api/favoriteApi";
 import { useRecoilValue } from "recoil";
-import { filteredBusStop } from "@recoil/main";
-import { favBusStopList } from "@recoil/main";
+import { favBusStopList, filteredBusStop, userPid } from "@recoil/main";
 import toast from "react-hot-toast";
 import ActiveHeader from "@components/base/ActiveHeader";
 import Header from "../base/Header";
@@ -35,6 +34,7 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   const filteredBusStation = useRecoilValue(filteredBusStop);
   const favoriteBusStopList = useRecoilValue(favBusStopList);
   const [filtered, setFiltered] = useState([]);
+  const pid = useRecoilValue(userPid);
 
   // 즐겨찾기에서 접근시 실행되는 쿼리
   const { data: busListInFavorite = [] } = useQuery(
@@ -48,6 +48,7 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   // put / delete mutation query
   const putMutation = useMutation(() => {
     addFavoriteList(
+      pid,
       list.city || filteredBusStation.city,
       list.station || filteredBusStation.station,
       selectedBusList

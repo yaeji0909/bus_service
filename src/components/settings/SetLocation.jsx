@@ -1,16 +1,24 @@
 import ToggleSwitch from "../common/ToggleSwitch";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CommonCheckBox from "./CommonCheckBox";
+import { useRecoilState } from "recoil";
+import { selectedCity } from "@recoil/main";
 
 const cities = [
   { id: "서울", num: 0 },
   { id: "경기", num: 39 },
   { id: "제주", num: 39 },
+  { id: "고양", num: 31100 },
 ];
 
 const SetLocation = () => {
   const [autoSetting, setAutoSetting] = useState(false);
+  const [selected, setSelected] = useRecoilState(selectedCity);
+
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
 
   return (
     <>
@@ -25,7 +33,7 @@ const SetLocation = () => {
         ? cities.map((city, index) => (
             <CitiesBox key={index}>
               <p>{city.id}</p>
-              <CommonCheckBox data={city} />
+              <CommonCheckBox data={city} onSelect={setSelected} />
             </CitiesBox>
           ))
         : ""}

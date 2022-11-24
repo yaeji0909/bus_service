@@ -4,13 +4,14 @@ import FavoriteStarIcon from "@components/common/FavoriteStarIcon";
 import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import { useRecoilValue } from "recoil";
-import { selectedCity } from "@recoil/main";
+import { selectedCity, userPid } from "@recoil/main";
 import useToggle from "@lib/hooks/useToggle";
 import { useEffect } from "react";
 
 const ActiveHeader = ({ busStopInfo, isAlreadyInFavList }) => {
   const [clickToggle, setClickToggle] = useToggle(false);
   const city = useRecoilValue(selectedCity);
+  const pid = useRecoilValue(userPid);
 
   const clickEventHandler = () => {
     setClickToggle(!clickToggle);
@@ -28,7 +29,7 @@ const ActiveHeader = ({ busStopInfo, isAlreadyInFavList }) => {
   }, [isAlreadyInFavList]);
 
   const putMutation = useMutation(() => {
-    addFavoriteList(city, busStopInfo.stopId || busStopInfo.station);
+    addFavoriteList(pid, city, busStopInfo.stopId || busStopInfo.station);
   });
 
   const deleteMutation = useMutation(() => {

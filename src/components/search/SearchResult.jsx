@@ -4,12 +4,13 @@ import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
-// import { useRecoilState } from "recoil";
-// import { selectedCity } from "@recoil/main";
+import { useRecoilValue } from "recoil";
+import { userPid, selectedCity } from "@recoil/main";
 import useToggle from "@lib/hooks/useToggle";
 
 const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
   const [clickToggle, setClickToggle] = useToggle(false);
+  const pid = useRecoilValue(userPid);
   // const [city, setCity] = useRecoilState(selectedCity);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
   }, []);
 
   const putMutation = useMutation(() => {
-    addFavoriteList(resultList.city, resultList.id);
+    addFavoriteList(pid, resultList.city, resultList.id);
   });
 
   const deleteMutation = useMutation(() => {
