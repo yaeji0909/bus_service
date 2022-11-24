@@ -1,6 +1,6 @@
 import { MapMarker } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
-import { clickedBusStop } from "@recoil/map";
+import { clickedBusStop } from "@recoil/main";
 import { useSetRecoilState } from "recoil";
 import busStopIcon from "@static/svg/bus-stop-marker.svg";
 

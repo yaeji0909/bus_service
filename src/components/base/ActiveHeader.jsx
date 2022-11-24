@@ -4,7 +4,7 @@ import FavoriteStarIcon from "@components/common/FavoriteStarIcon";
 import { useMutation } from "react-query";
 import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import { useRecoilValue } from "recoil";
-import { selectedCity } from "@recoil/map";
+import { selectedCity } from "@recoil/main";
 import useToggle from "@lib/hooks/useToggle";
 import { useEffect } from "react";
 

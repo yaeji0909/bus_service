@@ -5,8 +5,8 @@ import { useState, useRef, useEffect } from "react";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import { getFavoriteList } from "@api/favoriteApi";
-import { favBusStopList } from "@recoil/favorites";
-import { selectedCity } from "@recoil/map";
+import { favBusStopList, userPid } from "@recoil/main";
+import { selectedCity } from "@recoil/main";
 import useDebounce from "@components/home/hooks/useDebounce";
 import BottomSheetHeader from "@components/home/bottom-sheet/BottomSheetHeader";
 import BottomSheetBody from "@components/home/bottom-sheet/BottomSheetBody";
@@ -23,11 +23,12 @@ const LargeSearchInput = React.lazy(() =>
 function MainPage() {
   const [loadingOpen, setLoadingOpen] = useState(false);
   const city = useRecoilValue(selectedCity);
+  const pid = useRecoilValue(userPid);
   const setFavoriteBusStopList = useSetRecoilState(favBusStopList);
   const sheetRef = useRef();
   const open = useDebounce(loadingOpen, 1000);
   const { data: favoriteList = "" } = useQuery(["favoriteList", 1], () =>
-    getFavoriteList(city)
+    getFavoriteList(pid, city)
   );
 
   const handleButtonSheet = () => {

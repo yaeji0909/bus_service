@@ -5,7 +5,7 @@ import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
 // import { useRecoilState } from "recoil";
-// import { selectedCity } from "@recoil/map";
+// import { selectedCity } from "@recoil/main";
 import useToggle from "@lib/hooks/useToggle";
 
 const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {

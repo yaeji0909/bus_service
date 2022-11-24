@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef } from "react";
 import { useQuery } from "react-query";
 import { getFavoriteList } from "@api/favoriteApi";
 import { useRecoilValue } from "recoil";
-import { selectedCity } from "@recoil/map";
+import { selectedCity, userPid } from "@recoil/main";
 import { BottomSheetBodyBox, Wrapper } from "./bottomSheetStyles";
 import useStayScrolled from "react-stay-scrolled";
 import media from "@lib/styles/media";
@@ -21,13 +21,14 @@ const BottomSheetBody = ({}) => {
   const city = useRecoilValue(selectedCity);
   const bottomBody = useRef(null);
   const { scrollBottom } = useStayScrolled(bottomBody);
+  const pid = useRecoilValue(userPid);
 
   useLayoutEffect(() => {
     scrollBottom();
   }, [scrollBottom]);
 
   const { data: favoriteListData } = useQuery(["favoriteList"], () =>
-    getFavoriteList(city)
+    getFavoriteList(pid, city)
   );
 
   return (

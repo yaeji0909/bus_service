@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { filteredBusStop } from "@recoil/favorites";
+import { filteredBusStop } from "@recoil/main";
 import zIndexes from "@lib/styles/zIndexes";
 import Bus from "./Bus";
 import Button from "@components/common/Button";
