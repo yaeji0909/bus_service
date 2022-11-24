@@ -6,39 +6,37 @@ import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
 import { useRecoilValue } from "recoil";
 import { selectedCity } from "@recoil/map";
 import useToggle from "@lib/hooks/useToggle";
-import { favBusStopList } from "@recoil/favorites";
+import { useEffect } from "react";
 
-const ActiveHeader = ({ busStopInfo }) => {
+const ActiveHeader = ({ busStopInfo, isAlreadyInFavList }) => {
   const [clickToggle, setClickToggle] = useToggle(false);
   const city = useRecoilValue(selectedCity);
-  const favoriteBusStopList = useRecoilValue(favBusStopList);
-
-  console.log(busStopInfo);
-
-  //   const filterDefaultList = () => {
-  //     if (favoriteBusStopList.map((e) => e.station === busStopInfo.stopId))
-  //       setClickToggle(true);
-  //   };
-
-  //   useEffect(() => {
-  //     filterDefaultList();
-  //   }, []);
 
   const clickEventHandler = () => {
     setClickToggle(!clickToggle);
     if (clickToggle === false) {
+      console.log(clickToggle);
+
       putMutation.mutate(city, busStopInfo.stopId);
-    } else if (!clickToggle === true) {
+    } else if (clickToggle === true) {
+      console.log(clickToggle);
+
       deleteMutation.mutate(city, busStopInfo.stopId);
     }
   };
 
+  useEffect(() => {
+    if (busStopInfo.name === isAlreadyInFavList.name) {
+      setClickToggle(true);
+    }
+  }, [isAlreadyInFavList]);
+
   const putMutation = useMutation(() => {
-    addFavoriteList(city, busStopInfo.stopId);
+    addFavoriteList(city, busStopInfo.stopId || busStopInfo.station);
   });
 
   const deleteMutation = useMutation(() => {
-    deleteFavoriteList(city, busStopInfo.stopId);
+    deleteFavoriteList(city, busStopInfo.stopId || busStopInfo.station);
   });
 
   return (

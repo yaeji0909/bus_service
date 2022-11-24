@@ -7,12 +7,13 @@ import { getBusStopInfo } from "@api/mapApi";
 import CheckBox from "@components/common/CheckBox";
 import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
-import { addFavoriteList, deleteFavoriteList } from "@api/favoriteApi";
-import { useRecoilState } from "recoil";
+import { addFavoriteList } from "@api/favoriteApi";
+import { useRecoilValue } from "recoil";
 import { filteredBusStop } from "@recoil/favorites";
-// import Toast from "@components/common/Toast";
+import { favBusStopList } from "@recoil/favorites";
 import toast from "react-hot-toast";
 import ActiveHeader from "@components/base/ActiveHeader";
+import Header from "../base/Header";
 import React from "react";
 import {
   BusStopInfoBox,
@@ -20,8 +21,8 @@ import {
   BusStopInfoTextBox,
   BusStopInfoText,
   MapBtn,
-  HeaderBox,
   FavListBox,
+  HeaderBox,
 } from "./BusStopInfoStyle";
 
 const Toast = React.lazy(() => import("@components/common/Toast.jsx"));
@@ -31,8 +32,9 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   const [selectedBusList, setSelectedBusList] = useState([]);
   const [busListData, setBusListData] = useState([]);
   const [checkedItems, setCheckedItems] = useState(new Set());
-  const [filteredBusStation, setFilteredBusStation] =
-    useRecoilState(filteredBusStop);
+  const filteredBusStation = useRecoilValue(filteredBusStop);
+  const favoriteBusStopList = useRecoilValue(favBusStopList);
+  const [filtered, setFiltered] = useState([]);
 
   // 즐겨찾기에서 접근시 실행되는 쿼리
   const { data: busListInFavorite = [] } = useQuery(
@@ -52,16 +54,19 @@ const BusStopInfo = ({ list = [], type = [] }) => {
     );
   });
 
-  const deleteMutation = useMutation(() => {
-    deleteFavoriteList();
-  });
+  const filterBusStop = () => {
+    favoriteBusStopList.map((busStop) =>
+      busStop.station === list.station ? setFiltered(busStop) : ""
+    );
+  };
 
   useEffect(() => {
     if (busListInFavorite !== []) {
       const busListInFav = busListInFavorite?.map((el) => el);
       editBusObj(busListInFav);
+      filterBusStop();
     }
-  }, [busListInFavorite]);
+  }, [busListInFavorite, filteredBusStop, filtered]);
 
   const checkedItemHandler = (target, isChecked) => {
     if (isChecked) {
@@ -129,12 +134,15 @@ const BusStopInfo = ({ list = [], type = [] }) => {
   return (
     <>
       <HeaderBox>
-        <ActiveHeader busStopInfo={list} />
+        {type === "FAVORITE_LIST" ? (
+          <ActiveHeader busStopInfo={list} isAlreadyInFavList={filtered} />
+        ) : (
+          <Header />
+        )}
       </HeaderBox>
       <BusStopInfoBox>
         <BusStopInfoTextBox>
           <BusStopInfoText>
-            <Toast />
             <p>{list.name || filteredBusStation.name}</p>
           </BusStopInfoText>
           <MapBtn onClick={() => navigate(-1)}>
@@ -151,6 +159,7 @@ const BusStopInfo = ({ list = [], type = [] }) => {
                     list={bus}
                     type={type === "FAVORITE_LIST" ? type : ""}
                   />
+                  <Toast />
                   <CheckBoxContents>
                     <CheckBox
                       getToast={getToast}

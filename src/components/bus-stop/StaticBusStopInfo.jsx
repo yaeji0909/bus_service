@@ -16,11 +16,14 @@ import {
   MapBtn,
   HeaderBox,
 } from "./BusStopInfoStyle";
+import { favBusStopList } from "@recoil/favorites";
 
 const StaticBusStopInfo = () => {
   const navigate = useNavigate();
   const [busListData, setBusListData] = useState([]);
   const clickedBusStation = useRecoilValue(clickedBusStop);
+  const favoriteBusStopList = useRecoilValue(favBusStopList);
+  const [filteredBusStop, setFilteredBusStop] = useState([]);
 
   // 주변 정류소 클릭시
   const { data: busStopData } = useQuery(
@@ -55,17 +58,29 @@ const StaticBusStopInfo = () => {
     setBusListData(busList);
   };
 
+  const filterBusStop = () => {
+    favoriteBusStopList.map((busStop) =>
+      busStop.station === clickedBusStation.stopId
+        ? setFilteredBusStop(busStop)
+        : ""
+    );
+  };
+
   useEffect(() => {
     if (busStopData && busStopData.length > 0) {
       const busObjList = busStopData?.map((el) => el);
       editBusObj(busObjList);
     }
-  }, [busStopData]);
+    filterBusStop();
+  }, [busStopData, filteredBusStop]);
 
   return (
     <>
       <HeaderBox>
-        <ActiveHeader busStopInfo={clickedBusStation} />
+        <ActiveHeader
+          busStopInfo={clickedBusStation}
+          isAlreadyInFavList={filteredBusStop}
+        />
       </HeaderBox>
       <BusStopInfoBox>
         <BusStopInfoTextBox>

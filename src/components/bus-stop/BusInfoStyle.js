@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "@lib/styles/media";
 
 export const BusInfoBox = styled.div`
   padding: 1.5rem 2.8rem;
@@ -20,6 +21,11 @@ export const BusBadge = styled.div`
   font-size: 0.8rem;
   border-radius: 0.2rem;
   color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${media.xxsamll} {
+  }
 `;
 export const BusList = styled.li`
   font-size: 1.2rem;

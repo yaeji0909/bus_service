@@ -69,9 +69,6 @@ const ButtonBox = styled.div`
   right: 5%;
   bottom: 14%;
   position: absolute;
-  ${media.xxsamll} {
-    bottom: 16%;
-  }
   svg {
     border-radius: 50%;
     font-size: 3rem;
@@ -80,6 +77,9 @@ const ButtonBox = styled.div`
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     justify-content: center;
     align-items: center;
+    ${media.large} {
+      width: 40%;
+    }
   }
   .to-top-btn {
     background-color: #ffffff;
