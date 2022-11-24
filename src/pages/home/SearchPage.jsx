@@ -48,7 +48,7 @@ const SearchPage = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Helmet>
         <title>search page</title>
       </Helmet>
@@ -76,9 +76,12 @@ const SearchPage = () => {
           </BeforeSearch>
         )}
       </SearchContentsBox>
-    </>
+    </Wrapper>
   );
 };
+const Wrapper = styled.div`
+  height: 100vh;
+`;
 const SearchInputBox = styled.div`
   display: flex;
   align-items: center;

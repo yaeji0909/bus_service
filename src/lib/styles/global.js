@@ -15,17 +15,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    ${media.large}{
-    --rsbs-max-w: 65.1vw;
-    --rsbs-ml: 14rem;
-    }
-    ${media.xlarge}{
+    ${media.small}{
     --rsbs-max-w: 65vw;
-    --rsbs-ml: 15.75rem;
+    --rsbs-ml:auto;
+    --rsbs-mr:auto;
     }
     --rsbs-handle-bg: #fff;
-    --rsbs-ml: env(safe-area-inset-left);
-    --rsbs-mr: env(safe-area-inset-right);
     --rsbs-antigap-scale-y: 0;
     --rsbs-backdrop-bg: #fff;
     --rsbs-bg: #fff;

@@ -16,6 +16,7 @@ const PositionButton = ({ toggleHandler, toggle }) => {
   );
 };
 const Button = styled.button`
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   background-color: #ffffff;
   color: #006ffd;
@@ -23,20 +24,17 @@ const Button = styled.button`
   position: absolute;
   bottom: 15%;
   display: flex;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   justify-content: center;
   align-items: center;
   right: 5%;
   width: 3rem;
   height: 3rem;
   ${media.small} {
-    bottom: 17%;
+    bottom: 12%;
+    right: 20%;
   }
   svg {
     font-size: 1.5rem;
-    ${media.small} {
-      bottom: 18%;
-    }
   }
 
   &.true {

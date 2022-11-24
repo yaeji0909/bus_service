@@ -1,19 +1,25 @@
 import styled from "styled-components";
+import useToggle from "@lib/hooks/useToggle";
+import { useEffect } from "react";
 
 const CommonCheckBox = ({ data = [], onSelect }) => {
   // 체크박스 단일 선택
-  const handleSingleCheck = (checked) => {
-    if (checked == data.num) {
-      onSelect(data);
-    }
+  const [clickToggle, setClickToggle] = useToggle(false);
+
+  const handleSingleCheck = () => {
+    setClickToggle(!clickToggle);
+    onSelect(data.num);
   };
 
+  useEffect(() => {
+    console.log(clickToggle);
+  }, [clickToggle]);
   return (
     <Wrapper>
       <input
         type='checkbox'
-        name={`${data.routeno}` || `${data.id}`}
-        onChange={(e) => handleSingleCheck(e.currentTarget.name)}
+        name={`${data.station}` || `${data.id}`}
+        onChange={handleSingleCheck}
       />
     </Wrapper>
   );

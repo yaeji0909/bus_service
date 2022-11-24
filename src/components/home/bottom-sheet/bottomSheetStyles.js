@@ -17,23 +17,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   ${media.small} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  ${media.large} {
-    display: flex;
     justify-content: center;
     align-items: center;
   }
 `;
 
 export const BottomSheetBodyBox = styled.div`
+  width: 100%;
   ${media.small} {
-    width: 90vw;
-  }
-  ${media.large} {
-    width: 50vw;
+    width: 80%;
   }
   ${flexColumn};
   flex-grow: 1;

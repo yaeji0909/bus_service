@@ -12,18 +12,14 @@ const StyledSearchInput = styled(SearchInput)`
   z-index: ${zIndexes.FloatButton};
   position: absolute;
   left: 5%;
-
   ${media.small} {
-    width: 85vw;
+    width: 60vw;
+    left: 20%;
   }
   ${media.medium} {
     width: 60vw;
     left: 20%;
-    .hanmburger-btn {
-      left: 1%;
-    }
   }
-
   .hamburger-btn {
     fill: #191a20;
     position: absolute;

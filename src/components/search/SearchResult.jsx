@@ -24,7 +24,7 @@ const SearchResult = ({ resultList, query, busStopIdFromFavList }) => {
   });
 
   const deleteMutation = useMutation(() => {
-    deleteFavoriteList(resultList.city, resultList.id);
+    deleteFavoriteList(pid, resultList.city, resultList.id);
   });
 
   const editFavList = (clickToggle) => {

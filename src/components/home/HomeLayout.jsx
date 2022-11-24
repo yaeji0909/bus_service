@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { mediaQuery } from "@lib/styles/media";
 
 function HomeLayout({ main }) {
   return (
@@ -10,10 +11,13 @@ function HomeLayout({ main }) {
 }
 
 const Block = styled.div`
-  display: flex;
+  ${mediaQuery(768)} {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vw;
+  }
+  height: 100vh;
 `;
-const Main = styled.main`
-  flex: 1;
-`;
+const Main = styled.main``;
 
 export default HomeLayout;

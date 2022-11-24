@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { sessionStorageEffect } from "./util";
+import { sessionStorageEffect, localStorageEffect } from "./util";
 
 export const favBusStopList = atom({
   key: "favBusStopList",
@@ -26,6 +26,7 @@ export const userPid = atom({
 export const selectedCity = atom({
   key: "selectedCity",
   default: 39,
+  effects: [localStorageEffect("selected_city")],
 });
 
 export const clickedBusStop = atom({

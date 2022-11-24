@@ -33,7 +33,7 @@ const ActiveHeader = ({ busStopInfo, isAlreadyInFavList }) => {
   });
 
   const deleteMutation = useMutation(() => {
-    deleteFavoriteList(city, busStopInfo.stopId || busStopInfo.station);
+    deleteFavoriteList(pid, city, busStopInfo.stopId || busStopInfo.station);
   });
 
   return (

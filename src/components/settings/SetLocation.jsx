@@ -7,7 +7,7 @@ import { selectedCity } from "@recoil/main";
 
 const cities = [
   { id: "서울", num: 0 },
-  { id: "경기", num: 39 },
+  { id: "경기", num: 0 },
   { id: "제주", num: 39 },
   { id: "고양", num: 31100 },
 ];
@@ -19,6 +19,10 @@ const SetLocation = () => {
   useEffect(() => {
     console.log(selected);
   }, [selected]);
+
+  const selectHandler = (city) => {
+    setSelected(city);
+  };
 
   return (
     <>
@@ -33,7 +37,7 @@ const SetLocation = () => {
         ? cities.map((city, index) => (
             <CitiesBox key={index}>
               <p>{city.id}</p>
-              <CommonCheckBox data={city} onSelect={setSelected} />
+              <CommonCheckBox data={city} onSelect={selectHandler} />
             </CitiesBox>
           ))
         : ""}

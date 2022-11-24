@@ -25,7 +25,7 @@ const Block = styled.div`
     color: #8c8d96;
   }
 `;
-const Inner = styled(MainResponsive)`
+const Inner = styled.div`
   display: flex;
   padding: 1rem;
   justify-content: center;

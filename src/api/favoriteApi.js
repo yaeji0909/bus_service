@@ -22,9 +22,9 @@ export const addFavoriteList = async (
   return data || [];
 };
 
-export const deleteFavoriteList = async (cityCode, stationId) => {
+export const deleteFavoriteList = async (userPid, cityCode, stationId) => {
   const param = objectToParam({
-    user: 801,
+    user: userPid,
     city: cityCode,
     station: stationId,
   });

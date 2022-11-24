@@ -19,9 +19,9 @@ const FavoriteList = React.lazy(() =>
 
 const BottomSheetBody = ({}) => {
   const city = useRecoilValue(selectedCity);
+  const pid = useRecoilValue(userPid);
   const bottomBody = useRef(null);
   const { scrollBottom } = useStayScrolled(bottomBody);
-  const pid = useRecoilValue(userPid);
 
   useLayoutEffect(() => {
     scrollBottom();

@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import React, { useRef, useMemo, useEffect } from "react";
-import themedPalette from "@lib/styles/themes";
 import media from "@lib/styles/media";
 import palette from "@lib/styles/palette";
 import useToggle from "@lib/hooks/useToggle";
@@ -38,7 +37,7 @@ const SearchInputBlock = styled.div`
     color: #191a20;
     min-width: 0;
     &::placeholder {
-      color: ${themedPalette.text3};
+      color: ${palette.gray5};
     }
   }
 
@@ -47,7 +46,7 @@ const SearchInputBlock = styled.div`
     css`
       height: 2rem;
       box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-      border: 1px solid ${themedPalette.border3};
+      border: 1px solid ${palette.gray4};
       padding: 0 1.5rem;
       background: #ffffff;
       input {
@@ -55,27 +54,6 @@ const SearchInputBlock = styled.div`
         line-height: 2rem;
         height: auto;
         background: transparent;
-      }
-      ${media.small} {
-        height: 2.25rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        svg {
-          width: 1rem;
-          height: 1rem;
-          margin-right: 0.75rem;
-        }
-        input {
-          position: relative;
-          flex: 1;
-          font-size: 1.125rem;
-          line-height: 1.5;
-          height: auto;
-          color: transparent;
-          &:focus {
-            outline: none;
-          }
-        }
       }
     `}
 `;

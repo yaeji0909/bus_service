@@ -34,38 +34,40 @@ const SettingsMenu = () => {
 
   if (clickedMenu === "자동 새로고침 간격") {
     return (
-      <div>
+      <Wrapper>
         <Header title={"자동 새로고침 간격"} />
         <SetRefreshTime />
-      </div>
+      </Wrapper>
     );
   } else if (clickedMenu === "지역설정") {
     return (
-      <div>
+      <Wrapper>
         <Header title={"지역설정"} />
         <SetLocation />
-      </div>
+      </Wrapper>
     );
   } else if (clickedMenu === "위치 정보 이용동의") {
     return (
-      <div>
+      <Wrapper>
         <Header title={"위치 정보 이용동의"} />
-      </div>
+      </Wrapper>
     );
   } else if (clickedMenu === "서비스 이용약관") {
     return (
-      <div>
+      <Wrapper>
         <Header title={"서비스 이용약관"} />
-      </div>
+      </Wrapper>
     );
   }
 
   return (
-    <>
+    <Wrapper>
       <Helmet>
         <title>Settings</title>
       </Helmet>
-      <Header title={"설정"} />
+      <HeaderBox>
+        <Header title={"설정"} />
+      </HeaderBox>
       <SettingsMenuBox>
         <SettingsList>
           {menu.map((menu, index) => (
@@ -87,10 +89,17 @@ const SettingsMenu = () => {
           ))}
         </SettingsList>
       </SettingsMenuBox>
-    </>
+    </Wrapper>
   );
 };
-
+const Wrapper = styled.div`
+  height: 100vh;
+`;
+const HeaderBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const SettingsMenuBox = styled.ul``;
 const SettingsList = styled.div``;
 const SettingsMenuTitle = styled.div`

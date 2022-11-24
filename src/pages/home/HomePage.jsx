@@ -29,8 +29,8 @@ const HomePage = () => {
                   <Route path='bus-edit' element={<EditFavListPage />} />
                   <Route path='settings' element={<SettingPage />} />
                 </Routes>
+                <BottomTab />
               </Suspense>
-              <BottomTab />
             </>
           }
         />
